@@ -3,43 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Clan Portal Login</title>
-  <meta name="description" content="Gaming clan portal login page" />
+  <title>Pet Sim 99 Clan | Join the Team</title>
+  <meta
+    name="description"
+    content="Join our Pet Sim 99 clan fan site for free giveaways, teamwork, and daily group play."
+  />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
   <style>
     :root{
-      --bg-1:#0b1020;
-      --bg-2:#121a33;
-      --bg-3:#1b2450;
-      --panel:rgba(18,24,48,.72);
-      --panel-2:rgba(24,31,61,.88);
-      --text:#f6f8ff;
-      --muted:#a9b4de;
-      --cyan:#62f3ff;
-      --blue:#5f8dff;
-      --violet:#8f6bff;
-      --pink:#ff6fd8;
+      --bg-1:#081426;
+      --bg-2:#0f2140;
+      --bg-3:#153362;
+      --panel:rgba(16, 29, 58, .72);
+      --panel-strong:rgba(18, 33, 66, .88);
+      --text:#f9fbff;
+      --muted:#bfd0f7;
+      --cyan:#6ef4ff;
+      --aqua:#7fe8ff;
+      --blue:#5d8fff;
+      --violet:#8d73ff;
+      --pink:#ff76d8;
       --gold:#ffd86b;
-      --green:#7cff8b;
-      --shadow:0 24px 60px rgba(0,0,0,.38);
-      --container:1180px;
+      --green:#8cff9d;
+      --peach:#ffb780;
+      --line:rgba(255,255,255,.12);
+      --shadow:0 24px 60px rgba(0,0,0,.35);
+      --container:1220px;
+      --radius-xl:34px;
+      --radius-lg:26px;
+      --radius-md:18px;
     }
 
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-
     body{
       margin:0;
       min-height:100vh;
-      font-family:"Inter",sans-serif;
+      font-family:"Nunito", sans-serif;
       color:var(--text);
       background:
-        radial-gradient(circle at 15% 20%, rgba(98,243,255,.18), transparent 22%),
-        radial-gradient(circle at 85% 18%, rgba(255,111,216,.16), transparent 20%),
-        radial-gradient(circle at 75% 85%, rgba(255,216,107,.12), transparent 18%),
-        linear-gradient(180deg,var(--bg-1),var(--bg-2) 45%,var(--bg-3));
+        radial-gradient(circle at 12% 18%, rgba(110,244,255,.18), transparent 20%),
+        radial-gradient(circle at 88% 16%, rgba(255,118,216,.18), transparent 20%),
+        radial-gradient(circle at 80% 82%, rgba(255,216,107,.12), transparent 18%),
+        linear-gradient(180deg, var(--bg-1), var(--bg-2) 48%, var(--bg-3));
       overflow-x:hidden;
     }
 
@@ -47,34 +58,33 @@
     body::after{
       content:"";
       position:fixed;
-      inset:auto;
-      z-index:0;
       pointer-events:none;
-      filter:blur(1px);
+      z-index:0;
       opacity:.9;
+      filter:blur(1px);
     }
 
     body::before{
-      width:38vw;
-      height:38vw;
-      top:-12vw;
+      width:34vw;
+      height:34vw;
+      top:-8vw;
       right:-8vw;
-      border-radius:42% 58% 62% 38% / 40% 34% 66% 60%;
-      background:linear-gradient(135deg, rgba(98,243,255,.18), rgba(143,107,255,.08));
-      animation:floatBlob 14s ease-in-out infinite;
+      border-radius:54% 46% 68% 32% / 38% 42% 58% 62%;
+      background:linear-gradient(135deg, rgba(110,244,255,.16), rgba(141,115,255,.08));
+      animation:floatBlob 16s ease-in-out infinite;
     }
 
     body::after{
-      width:32vw;
-      height:32vw;
-      bottom:-10vw;
-      left:-8vw;
-      border-radius:58% 42% 36% 64% / 42% 56% 44% 58%;
-      background:linear-gradient(135deg, rgba(255,216,107,.12), rgba(255,111,216,.08));
+      width:28vw;
+      height:28vw;
+      bottom:-8vw;
+      left:-7vw;
+      border-radius:40% 60% 38% 62% / 48% 38% 62% 52%;
+      background:linear-gradient(135deg, rgba(255,216,107,.14), rgba(255,118,216,.08));
       animation:floatBlob 18s ease-in-out infinite reverse;
     }
 
-    .stars,
+    .sparkles,
     .grid{
       position:fixed;
       inset:0;
@@ -82,14 +92,15 @@
       z-index:0;
     }
 
-    .stars{
+    .sparkles{
       background-image:
-        radial-gradient(circle at 20% 30%, rgba(255,255,255,.9) 0 1px, transparent 1.5px),
-        radial-gradient(circle at 70% 20%, rgba(255,255,255,.7) 0 1px, transparent 1.5px),
-        radial-gradient(circle at 50% 75%, rgba(255,255,255,.75) 0 1px, transparent 1.5px),
-        radial-gradient(circle at 85% 60%, rgba(255,255,255,.6) 0 1px, transparent 1.5px),
-        radial-gradient(circle at 35% 85%, rgba(255,255,255,.55) 0 1px, transparent 1.5px);
-      opacity:.55;
+        radial-gradient(circle at 12% 25%, rgba(255,255,255,.95) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 24% 72%, rgba(255,255,255,.75) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 44% 18%, rgba(255,255,255,.85) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 63% 34%, rgba(255,255,255,.8) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 76% 80%, rgba(255,255,255,.72) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 90% 20%, rgba(255,255,255,.7) 0 1px, transparent 1.5px);
+      opacity:.65;
     }
 
     .grid{
@@ -97,8 +108,8 @@
         linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
       background-size:28px 28px;
-      mask-image:linear-gradient(180deg, transparent, rgba(0,0,0,.6), transparent);
-      opacity:.35;
+      mask-image:linear-gradient(180deg, transparent, rgba(0,0,0,.8), transparent);
+      opacity:.28;
     }
 
     .page{
@@ -115,20 +126,20 @@
       margin:0 auto;
       display:grid;
       grid-template-columns:1.08fr .92fr;
-      border-radius:34px;
+      border-radius:var(--radius-xl);
       overflow:hidden;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(16,21,42,.42);
+      border:1px solid var(--line);
+      background:rgba(15, 24, 48, .45);
       backdrop-filter:blur(18px) saturate(130%);
       box-shadow:var(--shadow);
     }
 
     .showcase{
-      min-height:760px;
-      padding:clamp(28px,4vw,56px);
+      min-height:780px;
+      padding:clamp(28px, 4vw, 56px);
       background:
         linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)),
-        linear-gradient(145deg, rgba(28,36,80,.92), rgba(15,21,43,.94));
+        linear-gradient(145deg, rgba(22, 42, 86, .94), rgba(11, 20, 40, .96));
       border-right:1px solid rgba(255,255,255,.08);
       display:flex;
       flex-direction:column;
@@ -137,8 +148,8 @@
 
     .topbar{
       display:flex;
-      justify-content:space-between;
       align-items:center;
+      justify-content:space-between;
       gap:16px;
     }
 
@@ -146,21 +157,21 @@
       display:inline-flex;
       align-items:center;
       gap:14px;
-      color:var(--text);
       text-decoration:none;
+      color:var(--text);
     }
 
     .logo-badge{
-      width:58px;
-      height:58px;
-      border-radius:18px;
-      position:relative;
+      width:64px;
+      height:64px;
+      border-radius:20px;
       display:grid;
       place-items:center;
+      position:relative;
       background:
-        linear-gradient(135deg, #4be7ff 0%, #5f8dff 32%, #9264ff 65%, #ff73da 100%);
+        linear-gradient(135deg, #68f4ff 0%, #6ea8ff 34%, #9675ff 66%, #ff83dd 100%);
       box-shadow:
-        0 18px 30px rgba(95,141,255,.24),
+        0 16px 28px rgba(93,143,255,.24),
         inset 0 2px 0 rgba(255,255,255,.35);
       transform:rotate(-8deg);
       overflow:hidden;
@@ -170,7 +181,7 @@
       content:"";
       position:absolute;
       inset:7px;
-      border-radius:14px;
+      border-radius:15px;
       background:linear-gradient(180deg, rgba(255,255,255,.28), rgba(255,255,255,.06));
       border:1px solid rgba(255,255,255,.16);
     }
@@ -178,17 +189,18 @@
     .logo-badge svg{
       position:relative;
       z-index:1;
-      width:34px;
-      height:34px;
-      filter:drop-shadow(0 2px 4px rgba(0,0,0,.24));
+      width:36px;
+      height:36px;
+      filter:drop-shadow(0 2px 4px rgba(0,0,0,.22));
     }
 
     .logo-copy strong{
       display:block;
-      font-family:"Bungee", cursive;
-      font-size:1rem;
-      letter-spacing:.06em;
+      font-family:"Baloo 2", cursive;
+      font-size:1.2rem;
       line-height:1;
+      letter-spacing:.02em;
+      text-transform:uppercase;
     }
 
     .logo-copy span{
@@ -196,7 +208,7 @@
       margin-top:4px;
       color:var(--muted);
       font-size:.85rem;
-      font-weight:700;
+      font-weight:800;
       letter-spacing:.08em;
       text-transform:uppercase;
     }
@@ -206,9 +218,9 @@
       border-radius:999px;
       border:1px solid rgba(255,255,255,.12);
       background:rgba(255,255,255,.06);
+      color:#e6fff0;
       font-size:.82rem;
-      font-weight:800;
-      color:#dcfff0;
+      font-weight:900;
       display:inline-flex;
       align-items:center;
       gap:10px;
@@ -221,55 +233,101 @@
       height:9px;
       border-radius:50%;
       background:var(--green);
-      box-shadow:0 0 0 7px rgba(124,255,139,.12);
+      box-shadow:0 0 0 7px rgba(140,255,157,.12);
     }
 
     .hero{
-      max-width:620px;
-      padding:30px 0;
+      max-width:650px;
+      padding:34px 0 18px;
     }
 
     .eyebrow{
       display:inline-block;
-      padding:9px 14px;
+      padding:10px 16px;
       border-radius:999px;
       background:rgba(255,255,255,.08);
       border:1px solid rgba(255,255,255,.12);
-      color:#d9e4ff;
+      color:#e0e9ff;
       text-transform:uppercase;
-      letter-spacing:.16em;
-      font-size:.76rem;
-      font-weight:800;
+      letter-spacing:.14em;
+      font-size:.74rem;
+      font-weight:900;
       margin-bottom:18px;
     }
 
     h1{
       margin:0;
-      font-family:"Bungee", cursive;
-      font-size:clamp(2.2rem,5vw,4.8rem);
-      line-height:.95;
-      letter-spacing:.02em;
-      text-shadow:0 6px 20px rgba(0,0,0,.28);
+      font-family:"Baloo 2", cursive;
+      font-size:clamp(2.6rem, 5vw, 5.2rem);
+      line-height:.92;
+      letter-spacing:.01em;
+      text-shadow:0 8px 24px rgba(0,0,0,.28);
     }
 
     .gradient-text{
-      background:linear-gradient(90deg, var(--gold), #fff3b3 25%, var(--cyan) 52%, #c9b7ff 74%, var(--pink) 100%);
+      background:linear-gradient(90deg, var(--gold), #fff3bc 24%, var(--cyan) 52%, #cdbdff 76%, var(--pink));
       -webkit-background-clip:text;
       background-clip:text;
       color:transparent;
     }
 
     .hero p{
-      margin:18px 0 0;
-      max-width:54ch;
+      margin:16px 0 0;
+      max-width:56ch;
       color:var(--muted);
+      font-size:1.03rem;
       line-height:1.75;
-      font-size:1.02rem;
     }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:24px;
+    }
+
+    .btn{
+      border:0;
+      border-radius:18px;
+      padding:15px 20px;
+      font:inherit;
+      font-weight:900;
+      cursor:pointer;
+      text-decoration:none;
+      transition:transform .22s ease, box-shadow .22s ease, filter .22s ease, background .22s ease;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+    }
+
+    .btn-primary{
+      color:#0b1220;
+      background:linear-gradient(135deg, var(--gold), #fff0a3 18%, var(--cyan) 54%, #91c6ff 76%, var(--pink));
+      box-shadow:
+        0 18px 28px rgba(93,143,255,.22),
+        inset 0 1px 0 rgba(255,255,255,.6);
+    }
+
+    .btn-secondary{
+      color:var(--text);
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:0 14px 24px rgba(0,0,0,.18);
+    }
+
+    .btn:hover,
+    .btn:focus-visible{
+      transform:translateY(-2px) scale(1.01);
+      filter:saturate(1.04);
+      outline:none;
+    }
+
+    .btn:active{transform:translateY(0) scale(.995)}
 
     .feature-band{
       display:grid;
-      grid-template-columns:1.2fr .8fr;
+      grid-template-columns:1.08fr .92fr;
       gap:18px;
       align-items:stretch;
       margin-top:28px;
@@ -277,12 +335,12 @@
 
     .feature-copy,
     .pet-panel{
-      border-radius:28px;
+      border-radius:var(--radius-lg);
       border:1px solid rgba(255,255,255,.1);
       overflow:hidden;
       background:rgba(255,255,255,.06);
-      box-shadow:0 16px 36px rgba(0,0,0,.22);
       backdrop-filter:blur(10px);
+      box-shadow:0 16px 36px rgba(0,0,0,.22);
     }
 
     .feature-copy{
@@ -291,16 +349,17 @@
 
     .feature-copy h2{
       margin:0 0 10px;
-      font-size:1.15rem;
-      font-weight:800;
-      letter-spacing:-.03em;
+      font-size:1.18rem;
+      line-height:1.1;
+      font-weight:900;
+      letter-spacing:-.02em;
     }
 
     .feature-copy p{
       margin:0;
       color:var(--muted);
-      line-height:1.7;
-      font-size:.96rem;
+      line-height:1.72;
+      font-size:.97rem;
     }
 
     .pill-row{
@@ -315,18 +374,18 @@
       border-radius:999px;
       background:rgba(255,255,255,.07);
       border:1px solid rgba(255,255,255,.1);
-      font-size:.8rem;
-      font-weight:700;
       color:#eef3ff;
+      font-size:.8rem;
+      font-weight:800;
     }
 
     .pet-panel{
+      min-height:270px;
       position:relative;
-      min-height:250px;
       background:
-        radial-gradient(circle at 30% 20%, rgba(98,243,255,.18), transparent 26%),
-        radial-gradient(circle at 70% 70%, rgba(255,111,216,.16), transparent 22%),
-        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+        radial-gradient(circle at 30% 20%, rgba(110,244,255,.18), transparent 24%),
+        radial-gradient(circle at 74% 72%, rgba(255,118,216,.16), transparent 24%),
+        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
     }
 
     .pet-panel svg{
@@ -335,49 +394,81 @@
       display:block;
     }
 
-    .login-side{
-      min-height:760px;
+    .join-side{
+      min-height:780px;
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:clamp(24px,4vw,52px);
+      padding:clamp(24px, 4vw, 52px);
       background:
         linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)),
-        rgba(10,14,30,.62);
+        rgba(10, 14, 30, .62);
     }
 
-    .login-wrap{
-      width:min(100%, 430px);
+    .join-wrap{
+      width:min(100%, 450px);
     }
 
-    .login-head{
+    .join-head{
       margin-bottom:24px;
     }
 
-    .login-head h2{
+    .join-head h2{
       margin:0;
-      font-size:clamp(2rem,4vw,2.8rem);
-      line-height:.95;
-      letter-spacing:-.04em;
-      font-weight:800;
+      font-family:"Baloo 2", cursive;
+      font-size:clamp(2.1rem, 4vw, 3.1rem);
+      line-height:.92;
+      letter-spacing:.01em;
     }
 
-    .login-head p{
-      margin:12px 0 0;
+    .join-head p{
+      margin:10px 0 0;
       color:var(--muted);
-      line-height:1.7;
-      font-size:.98rem;
+      line-height:1.72;
+      font-size:.99rem;
     }
 
     .panel{
       padding:24px;
       border-radius:28px;
       border:1px solid rgba(255,255,255,.12);
-      background:var(--panel-2);
+      background:var(--panel-strong);
       box-shadow:
-        0 18px 40px rgba(0,0,0,.3),
+        0 18px 40px rgba(0,0,0,.32),
         inset 0 1px 0 rgba(255,255,255,.08);
       backdrop-filter:blur(14px);
+    }
+
+    .mini-stats{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:12px;
+      margin-bottom:18px;
+    }
+
+    .mini-stat{
+      padding:14px 12px;
+      border-radius:18px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
+      text-align:center;
+    }
+
+    .mini-stat strong{
+      display:block;
+      font-size:1.15rem;
+      font-weight:900;
+      color:#fff7cf;
+    }
+
+    .mini-stat span{
+      display:block;
+      margin-top:4px;
+      font-size:.77rem;
+      font-weight:800;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.08em;
     }
 
     form{
@@ -392,7 +483,7 @@
 
     label{
       font-size:.9rem;
-      font-weight:700;
+      font-weight:800;
       color:#eef2ff;
     }
 
@@ -400,136 +491,75 @@
       position:relative;
     }
 
-    input{
+    input,
+    select,
+    textarea{
       width:100%;
       border:1px solid rgba(255,255,255,.12);
       background:rgba(255,255,255,.06);
       color:var(--text);
       border-radius:16px;
-      padding:16px 18px;
+      padding:15px 16px;
       font:inherit;
       transition:border-color .2s ease, box-shadow .2s ease, transform .2s ease, background .2s ease;
     }
 
-    input::placeholder{color:#aab5df}
+    textarea{
+      min-height:96px;
+      resize:vertical;
+    }
 
-    input:hover{
+    input::placeholder,
+    textarea::placeholder{
+      color:#aebbe6;
+    }
+
+    input:hover,
+    select:hover,
+    textarea:hover{
       background:rgba(255,255,255,.08);
     }
 
-    input:focus{
+    input:focus,
+    select:focus,
+    textarea:focus{
       outline:none;
-      border-color:rgba(98,243,255,.55);
-      box-shadow:0 0 0 4px rgba(98,243,255,.14);
+      border-color:rgba(110,244,255,.55);
+      box-shadow:0 0 0 4px rgba(110,244,255,.14);
       transform:translateY(-1px);
       background:rgba(255,255,255,.1);
     }
 
-    .password-toggle{
-      position:absolute;
-      top:50%;
-      right:10px;
-      transform:translateY(-50%);
-      width:40px;
-      height:40px;
-      display:grid;
-      place-items:center;
-      border:0;
-      border-radius:12px;
-      background:transparent;
-      color:#d5ddff;
-      cursor:pointer;
-      transition:background .2s ease, color .2s ease;
-    }
-
-    .password-toggle:hover,
-    .password-toggle:focus-visible{
-      background:rgba(255,255,255,.08);
-      color:#fff;
-      outline:none;
-    }
-
-    .row{
+    .checkbox-row{
       display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      flex-wrap:wrap;
-    }
-
-    .check{
-      display:inline-flex;
-      align-items:center;
+      align-items:flex-start;
       gap:10px;
-      font-size:.92rem;
       color:#d8e0ff;
-      cursor:pointer;
-      user-select:none;
+      font-size:.92rem;
+      line-height:1.5;
     }
 
-    .check input{
+    .checkbox-row input{
       width:18px;
       height:18px;
-      margin:0;
+      margin-top:2px;
       accent-color:var(--cyan);
       box-shadow:none;
       transform:none;
     }
 
-    .link{
-      color:var(--cyan);
-      text-decoration:none;
-      font-weight:700;
-    }
-
-    .link:hover,
-    .link:focus-visible{
-      text-decoration:underline;
-      outline:none;
-    }
-
-    .submit{
-      border:0;
-      border-radius:18px;
-      padding:16px 20px;
-      color:#08111e;
-      font:inherit;
-      font-weight:900;
-      cursor:pointer;
-      background:
-        linear-gradient(135deg, var(--gold), #fff0a3 18%, var(--cyan) 52%, #8ec1ff 74%, var(--pink));
-      box-shadow:
-        0 18px 28px rgba(95,141,255,.22),
-        inset 0 1px 0 rgba(255,255,255,.6);
-      transition:transform .22s ease, box-shadow .22s ease, filter .22s ease;
-    }
-
-    .submit:hover,
-    .submit:focus-visible{
-      transform:translateY(-2px) scale(1.01);
-      filter:saturate(1.05);
-      box-shadow:
-        0 22px 34px rgba(95,141,255,.28),
-        inset 0 1px 0 rgba(255,255,255,.65);
-      outline:none;
-    }
-
-    .submit:active{
-      transform:translateY(0) scale(.995);
-    }
-
-    .footnote{
-      margin-top:16px;
+    .helper{
+      margin-top:14px;
       font-size:.88rem;
       color:var(--muted);
       line-height:1.7;
     }
 
-    .signup{
-      margin-top:20px;
+    .join-note{
+      margin-top:18px;
       text-align:center;
-      color:#cad5ff;
       font-size:.95rem;
+      color:#d5ddff;
     }
 
     .reveal{
@@ -542,6 +572,7 @@
     .delay-2{animation-delay:.16s}
     .delay-3{animation-delay:.24s}
     .delay-4{animation-delay:.32s}
+    .delay-5{animation-delay:.4s}
 
     .scroll-reveal{
       opacity:0;
@@ -569,18 +600,24 @@
     @media (max-width: 980px){
       .shell{grid-template-columns:1fr}
       .showcase,
-      .login-side{min-height:auto}
-      .showcase{border-right:0;border-bottom:1px solid rgba(255,255,255,.08)}
+      .join-side{min-height:auto}
+      .showcase{
+        border-right:0;
+        border-bottom:1px solid rgba(255,255,255,.08);
+      }
     }
 
     @media (max-width: 640px){
       .page{padding:14px}
       .shell{border-radius:24px}
       .showcase,
-      .login-side{padding:22px}
+      .join-side{padding:22px}
       .feature-band{grid-template-columns:1fr}
       .panel{padding:18px}
-      .topbar{align-items:flex-start;flex-direction:column}
+      .topbar{align-items:flex-start; flex-direction:column}
+      .mini-stats{grid-template-columns:1fr 1fr 1fr}
+      .hero-actions{flex-direction:column}
+      .btn{width:100%}
     }
 
     @media (prefers-reduced-motion: reduce){
@@ -600,108 +637,204 @@
   </style>
 </head>
 <body>
-  <div class="stars" aria-hidden="true"></div>
+  <div class="sparkles" aria-hidden="true"></div>
   <div class="grid" aria-hidden="true"></div>
 
   <main class="page">
-    <section class="shell" aria-label="Clan portal login page">
+    <section class="shell" aria-label="Pet Sim 99 clan fan website">
       <aside class="showcase">
         <div class="topbar reveal delay-1">
-          <a href="#" class="logo" aria-label="Clan home">
+          <a href="#" class="logo" aria-label="Pet Sim 99 clan home">
             <span class="logo-badge" aria-hidden="true">
               <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20 28C20 18.6112 27.6112 11 37 11C46.3888 11 54 18.6112 54 28V30.5C54 38.5081 47.5081 45 39.5 45H34C26.268 45 20 38.732 20 31V28Z" fill="white" opacity=".98"/>
-                <path d="M16 31C16 23.268 22.268 17 30 17H33C40.732 17 47 23.268 47 31V33C47 40.732 40.732 47 33 47H30C22.268 47 16 40.732 16 33V31Z" fill="#FFF4B5"/>
-                <circle cx="26" cy="31" r="3.2" fill="#2D3A73"/>
-                <circle cx="38" cy="31" r="3.2" fill="#2D3A73"/>
-                <path d="M26.5 39C28.5 40.7 30.6 41.5 32.2 41.5C33.8 41.5 35.9 40.7 37.9 39" stroke="#2D3A73" stroke-width="2.8" stroke-linecap="round"/>
-                <path d="M19 23L14 17" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
-                <path d="M44 21L50 14" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+                <path d="M18 30C18 20.6 25.6 13 35 13C44.4 13 52 20.6 52 30V33C52 41.3 45.3 48 37 48H31C23.8 48 18 42.2 18 35V30Z" fill="white" opacity=".98"/>
+                <path d="M14 33C14 24.7 20.7 18 29 18H33C41.3 18 48 24.7 48 33V35C48 43.3 41.3 50 33 50H29C20.7 50 14 43.3 14 35V33Z" fill="#FFF3AE"/>
+                <circle cx="25.5" cy="33" r="3.2" fill="#2D3A73"/>
+                <circle cx="36.5" cy="33" r="3.2" fill="#2D3A73"/>
+                <path d="M25.5 40C27.6 41.7 29.9 42.5 31 42.5C32.1 42.5 34.4 41.7 36.5 40" stroke="#2D3A73" stroke-width="2.8" stroke-linecap="round"/>
+                <path d="M17 24L12 18" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+                <path d="M42 22L48 16" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
               </svg>
             </span>
             <span class="logo-copy">
-              <strong>pet sim 99 clan</strong>
-              <span>Member Portal</span>
+              <strong>Pet Sim 99 Clan</strong>
+              <span>Fan Clan Hub</span>
             </span>
           </a>
-          <div class="status">Clan server online</div>
+          <div class="status">Giveaways active</div>
         </div>
 
         <div class="hero">
-          <span class="eyebrow reveal delay-2">Daily rewards and team play</span>
+          <span class="eyebrow reveal delay-2">Free giveaways • teamwork • daily play</span>
           <h1 class="reveal delay-2">
-            Win <span class="gradient-text">free giveaways</span> and play together as a clan.
+            Join our <span class="gradient-text">Pet Sim 99 clan</span> and work together for rewards.
           </h1>
           <p class="reveal delay-3">
-            Join a friendly group focused on helping each other, grinding together, sharing tips,
-            and taking part in free clan giveaways for active members.
+            We give free giveaways, help each other grow, and play together as a clan.
+            If you want a friendly team for grinding, trading, events, and community fun,
+            this is the place to join.
           </p>
 
-          <div class="feature-band scroll-reveal">
+          <div class="hero-actions reveal delay-4">
+            <a class="btn btn-primary" href="#join-form">Join the Clan</a>
+            <a class="btn btn-secondary" href="#benefits">See Benefits</a>
+          </div>
+
+          <div class="feature-band scroll-reveal" id="benefits">
             <div class="feature-copy">
-              <h2>More than just a clan</h2>
+              <h2>What makes our clan fun</h2>
               <p>
-                Team up for sessions, make progress faster with other members, and stay ready for surprise
-                giveaways, group events, and community rewards throughout the week.
+                Our members team up for grinding sessions, help new players, share trading tips,
+                and take part in free giveaways. We work together as a clan so everyone has a
+                better time playing.
               </p>
               <div class="pill-row" aria-label="Clan highlights">
                 <span class="pill">Free giveaways</span>
-                <span class="pill">Play together</span>
-                <span class="pill">Friendly members</span>
-                <span class="pill">Group events</span>
+                <span class="pill">Clan teamwork</span>
+                <span class="pill">Helpful members</span>
+                <span class="pill">Trade tips</span>
+                <span class="pill">Group play</span>
+                <span class="pill">Daily activity</span>
               </div>
             </div>
 
             <div class="pet-panel" aria-hidden="true">
-              <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+              <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
                 <defs>
-                  <linearGradient id="petGlow" x1="52" y1="28" x2="258" y2="290" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#62F3FF"/>
-                    <stop offset=".45" stop-color="#7F8BFF"/>
-                    <stop offset="1" stop-color="#FF76DB"/>
+                  <linearGradient id="skyGlow" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#62F3FF"/>
+                    <stop offset="50%" stop-color="#8F6BFF"/>
+                    <stop offset="100%" stop-color="#FF6FD8"/>
                   </linearGradient>
-                  <linearGradient id="petBody" x1="108" y1="76" x2="204" y2="226" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#FFF7CB"/>
-                    <stop offset="1" stop-color="#FFD86B"/>
+
+                  <linearGradient id="petYellow" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#FFF7B8"/>
+                    <stop offset="100%" stop-color="#FFD54F"/>
                   </linearGradient>
+
+                  <linearGradient id="petBlue" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#A7F3FF"/>
+                    <stop offset="100%" stop-color="#4CC9FF"/>
+                  </linearGradient>
+
+                  <linearGradient id="petPink" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#FFD1F0"/>
+                    <stop offset="100%" stop-color="#FF83DD"/>
+                  </linearGradient>
+
+                  <filter id="softGlow">
+                    <feGaussianBlur stdDeviation="8" result="blur"/>
+                    <feMerge>
+                      <feMergeNode in="blur"/>
+                      <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                  </filter>
                 </defs>
 
-                <circle cx="160" cy="160" r="108" fill="url(#petGlow)" opacity=".16"/>
-                <circle cx="160" cy="160" r="86" fill="rgba(255,255,255,.06)"/>
-                <path d="M110 136C110 102.863 136.863 76 170 76C203.137 76 230 102.863 230 136V168C230 201.137 203.137 228 170 228H150C127.909 228 110 210.091 110 188V136Z" fill="url(#petBody)"/>
-                <path d="M118 110L96 84" stroke="#fff" stroke-width="10" stroke-linecap="round"/>
-                <path d="M220 106L244 80" stroke="#fff" stroke-width="10" stroke-linecap="round"/>
-                <circle cx="146" cy="154" r="10" fill="#28386A"/>
-                <circle cx="188" cy="154" r="10" fill="#28386A"/>
-                <path d="M148 190C154 196 161 199 168 199C175 199 182 196 188 190" stroke="#28386A" stroke-width="8" stroke-linecap="round"/>
-                <circle cx="120" cy="205" r="10" fill="#62F3FF" opacity=".75"/>
-                <circle cx="222" cy="118" r="8" fill="#FF76DB" opacity=".7"/>
-                <circle cx="214" cy="212" r="11" fill="#FFD86B" opacity=".8"/>
-                <path d="M66 72L72 86L86 92L72 98L66 112L60 98L46 92L60 86L66 72Z" fill="#fff" opacity=".9"/>
-                <path d="M258 176L263 187L274 192L263 197L258 208L253 197L242 192L253 187L258 176Z" fill="#fff" opacity=".85"/>
+                <circle cx="210" cy="160" r="120" fill="url(#skyGlow)" opacity=".22"/>
+                <ellipse cx="210" cy="258" rx="126" ry="24" fill="#000" opacity=".18"/>
+
+                <g opacity=".96">
+                  <circle cx="68" cy="230" r="20" fill="#FFD54F"/>
+                  <circle cx="68" cy="230" r="14" fill="#FFE27A"/>
+                  <text x="68" y="236" text-anchor="middle" font-size="14" font-weight="900" fill="#9A6B00">$</text>
+
+                  <circle cx="350" cy="222" r="18" fill="#FFD54F"/>
+                  <circle cx="350" cy="222" r="12" fill="#FFE27A"/>
+                  <text x="350" y="227" text-anchor="middle" font-size="13" font-weight="900" fill="#9A6B00">$</text>
+                </g>
+
+                <g transform="translate(320 72)" filter="url(#softGlow)">
+                  <polygon points="20,0 40,18 30,42 10,42 0,18" fill="#62F3FF"/>
+                  <polygon points="20,6 33,18 26,35 14,35 7,18" fill="#C9FBFF"/>
+                </g>
+
+                <g fill="#fff" opacity=".95">
+                  <path d="M92 78l6 12 12 6-12 6-6 12-6-12-12-6 12-6z"/>
+                  <path d="M350 130l5 10 10 5-10 5-5 10-5-10-10-5 10-5z"/>
+                  <path d="M134 50l4 8 8 4-8 4-4 8-4-8-8-4 8-4z"/>
+                </g>
+
+                <g transform="translate(86 88)">
+                  <g filter="url(#softGlow)">
+                    <rect x="0" y="26" width="122" height="110" rx="36" fill="url(#petYellow)"/>
+                    <polygon points="18,28 38,0 54,34" fill="#FFF2A8"/>
+                    <polygon points="68,24 92,2 102,36" fill="#FFF2A8"/>
+                    <circle cx="38" cy="70" r="10" fill="#243B6B"/>
+                    <circle cx="82" cy="70" r="10" fill="#243B6B"/>
+                    <circle cx="34" cy="67" r="3" fill="#fff"/>
+                    <circle cx="78" cy="67" r="3" fill="#fff"/>
+                    <path d="M42 102 Q60 118 80 102" stroke="#243B6B" stroke-width="7" fill="none" stroke-linecap="round"/>
+                    <circle cx="18" cy="96" r="8" fill="#FFB3D9" opacity=".75"/>
+                    <circle cx="104" cy="96" r="8" fill="#FFB3D9" opacity=".75"/>
+                  </g>
+                </g>
+
+                <g transform="translate(202 114)">
+                  <g filter="url(#softGlow)">
+                    <rect x="0" y="20" width="98" height="90" rx="30" fill="url(#petBlue)"/>
+                    <polygon points="14,24 30,0 44,30" fill="#D7FAFF"/>
+                    <polygon points="58,24 82,4 88,34" fill="#D7FAFF"/>
+                    <circle cx="34" cy="58" r="8" fill="#243B6B"/>
+                    <circle cx="68" cy="58" r="8" fill="#243B6B"/>
+                    <circle cx="31" cy="56" r="2.5" fill="#fff"/>
+                    <circle cx="65" cy="56" r="2.5" fill="#fff"/>
+                    <path d="M38 82 Q50 92 66 82" stroke="#243B6B" stroke-width="6" fill="none" stroke-linecap="round"/>
+                    <circle cx="14" cy="78" r="6" fill="#FFB3D9" opacity=".7"/>
+                    <circle cx="86" cy="78" r="6" fill="#FFB3D9" opacity=".7"/>
+                  </g>
+                </g>
+
+                <g transform="translate(268 142)">
+                  <g filter="url(#softGlow)">
+                    <rect x="0" y="18" width="74" height="68" rx="24" fill="url(#petPink)"/>
+                    <polygon points="10,22 22,2 34,24" fill="#FFE7F7"/>
+                    <polygon points="42,22 60,6 64,28" fill="#FFE7F7"/>
+                    <circle cx="24" cy="44" r="6" fill="#243B6B"/>
+                    <circle cx="48" cy="44" r="6" fill="#243B6B"/>
+                    <path d="M26 61 Q36 69 46 61" stroke="#243B6B" stroke-width="4.8" fill="none" stroke-linecap="round"/>
+                  </g>
+                </g>
               </svg>
             </div>
           </div>
         </div>
       </aside>
 
-      <section class="login-side">
-        <div class="login-wrap">
-          <header class="login-head">
-            <h2 class="reveal delay-2">Roblox Login</h2>
-            <p class="reveal delay-3">Enter your Roblox username and password to continue.</p>
+      <section class="join-side">
+        <div class="join-wrap">
+          <header class="join-head">
+            <h2 class="reveal delay-2">Join the Clan</h2>
+            <p class="reveal delay-3">
+              Fill in your details and apply to become part of our Pet Sim 99 fan clan community.
+            </p>
           </header>
 
           <div class="panel reveal delay-4">
-            <form action="/register" method="POST">
+            <div class="mini-stats" aria-label="Clan stats">
+              <div class="mini-stat">
+                <strong>Daily</strong>
+                <span>Giveaways</span>
+              </div>
+              <div class="mini-stat">
+                <strong>Team</strong>
+                <span>Grinding</span>
+              </div>
+              <div class="mini-stat">
+                <strong>Active</strong>
+                <span>Members</span>
+              </div>
+            </div>
+
+            <form id="join-form">
               <div class="field">
-                <label for="username">Username</label>
+                <label for="username">Roblox Username</label>
                 <div class="input-wrap">
                   <input
                     id="username"
-                    type="text"
                     name="username"
-                    placeholder="Enter username"
+                    type="text"
+                    placeholder="Enter your Roblox username"
                     autocomplete="username"
                     required
                   />
@@ -709,42 +842,67 @@
               </div>
 
               <div class="field">
-                <label for="password">Password</label>
+                <label for="discord">Discord Username</label>
                 <div class="input-wrap">
                   <input
-                    id="password"
-                    type="password"
-                    name="password"
-                    placeholder="Enter password"
-                    autocomplete="current-password"
-                    required
+                    id="discord"
+                    name="discord"
+                    type="text"
+                    placeholder="Enter your Discord username"
                   />
-                  <button class="password-toggle" type="button" aria-label="Show password" aria-pressed="false">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                      <path d="M1.5 12s3.75-6.75 10.5-6.75S22.5 12 22.5 12s-3.75 6.75-10.5 6.75S1.5 12 1.5 12Z" stroke="currentColor" stroke-width="1.7"/>
-                      <circle cx="12" cy="12" r="3.25" stroke="currentColor" stroke-width="1.7"/>
-                    </svg>
-                  </button>
                 </div>
               </div>
 
-              <div class="row">
-                <label class="check" for="remember">
-                  <input id="remember" type="checkbox" name="remember" checked />
-                  <span>Remember me</span>
-                </label>
-                <a class="link" href="#"></a>
+              <div class="field">
+                <label for="favorite-pet">Favorite Pet</label>
+                <div class="input-wrap">
+                  <input
+                    id="favorite-pet"
+                    name="favorite-pet"
+                    type="text"
+                    placeholder="What is your favorite pet?"
+                  />
+                </div>
               </div>
 
-              <button class="submit" type="submit">Log In </button>
+              <div class="field">
+                <label for="activity">How active are you?</label>
+                <div class="input-wrap">
+                  <select id="activity" name="activity">
+                    <option value="">Select activity level</option>
+                    <option>Every day</option>
+                    <option>A few times a week</option>
+                    <option>Weekends mostly</option>
+                    <option>Sometimes</option>
+                  </select>
+                </div>
+              </div>
 
-              <p class="footnote">
-              
+              <div class="field">
+                <label for="message">Why do you want to join?</label>
+                <div class="input-wrap">
+                  <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Tell us why you want to join the clan..."
+                  ></textarea>
+                </div>
+              </div>
+
+              <label class="checkbox-row" for="agree">
+                <input id="agree" type="checkbox" required />
+                <span>I agree to be respectful, help the clan, and take part in teamwork.</span>
+              </label>
+
+              <button class="btn btn-primary" type="submit">Send Application</button>
+
+              <p class="helper">
+                This is a fan clan join page. It does not ask for your Roblox password.
               </p>
             </form>
 
-            <p class="signup">
-               <a class="link" href="#"></a>
+            <p class="join-note">
+              We give <strong>free giveaways</strong> and we <strong>work together as a clan</strong>.
             </p>
           </div>
         </div>
@@ -753,18 +911,6 @@
   </main>
 
   <script>
-    const toggleBtn = document.querySelector('.password-toggle');
-    const passwordInput = document.getElementById('password');
-
-    if (toggleBtn && passwordInput) {
-      toggleBtn.addEventListener('click', () => {
-        const hidden = passwordInput.type === 'password';
-        passwordInput.type = hidden ? 'text' : 'password';
-        toggleBtn.setAttribute('aria-label', hidden ? 'Hide password' : 'Show password');
-        toggleBtn.setAttribute('aria-pressed', String(hidden));
-      });
-    }
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -775,6 +921,13 @@
     }, { threshold: 0.14 });
 
     document.querySelectorAll('.scroll-reveal').forEach((el) => observer.observe(el));
+
+    const form = document.getElementById('join-form');
+
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Your clan application was sent! You can now replace this alert with your own form system later.');
+    });
   </script>
 </body>
 </html>
