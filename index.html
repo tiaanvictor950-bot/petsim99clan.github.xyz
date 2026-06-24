@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clan Portal Login</title>
+  <meta name="description" content="Gaming clan portal login page" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg-1:#0b1020;
+      --bg-2:#121a33;
+      --bg-3:#1b2450;
+      --panel:rgba(18,24,48,.72);
+      --panel-2:rgba(24,31,61,.88);
+      --text:#f6f8ff;
+      --muted:#a9b4de;
+      --cyan:#62f3ff;
+      --blue:#5f8dff;
+      --violet:#8f6bff;
+      --pink:#ff6fd8;
+      --gold:#ffd86b;
+      --green:#7cff8b;
+      --shadow:0 24px 60px rgba(0,0,0,.38);
+      --container:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family:"Inter",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 15% 20%, rgba(98,243,255,.18), transparent 22%),
+        radial-gradient(circle at 85% 18%, rgba(255,111,216,.16), transparent 20%),
+        radial-gradient(circle at 75% 85%, rgba(255,216,107,.12), transparent 18%),
+        linear-gradient(180deg,var(--bg-1),var(--bg-2) 45%,var(--bg-3));
+      overflow-x:hidden;
+    }
+
+    body::before,
+    body::after{
+      content:"";
+      position:fixed;
+      inset:auto;
+      z-index:0;
+      pointer-events:none;
+      filter:blur(1px);
+      opacity:.9;
+    }
+
+    body::before{
+      width:38vw;
+      height:38vw;
+      top:-12vw;
+      right:-8vw;
+      border-radius:42% 58% 62% 38% / 40% 34% 66% 60%;
+      background:linear-gradient(135deg, rgba(98,243,255,.18), rgba(143,107,255,.08));
+      animation:floatBlob 14s ease-in-out infinite;
+    }
+
+    body::after{
+      width:32vw;
+      height:32vw;
+      bottom:-10vw;
+      left:-8vw;
+      border-radius:58% 42% 36% 64% / 42% 56% 44% 58%;
+      background:linear-gradient(135deg, rgba(255,216,107,.12), rgba(255,111,216,.08));
+      animation:floatBlob 18s ease-in-out infinite reverse;
+    }
+
+    .stars,
+    .grid{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:0;
+    }
+
+    .stars{
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,.9) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 70% 20%, rgba(255,255,255,.7) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 50% 75%, rgba(255,255,255,.75) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 85% 60%, rgba(255,255,255,.6) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 35% 85%, rgba(255,255,255,.55) 0 1px, transparent 1.5px);
+      opacity:.55;
+    }
+
+    .grid{
+      background:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size:28px 28px;
+      mask-image:linear-gradient(180deg, transparent, rgba(0,0,0,.6), transparent);
+      opacity:.35;
+    }
+
+    .page{
+      position:relative;
+      z-index:1;
+      min-height:100vh;
+      display:grid;
+      align-items:center;
+      padding:20px;
+    }
+
+    .shell{
+      width:min(100%, var(--container));
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      border-radius:34px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(16,21,42,.42);
+      backdrop-filter:blur(18px) saturate(130%);
+      box-shadow:var(--shadow);
+    }
+
+    .showcase{
+      min-height:760px;
+      padding:clamp(28px,4vw,56px);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)),
+        linear-gradient(145deg, rgba(28,36,80,.92), rgba(15,21,43,.94));
+      border-right:1px solid rgba(255,255,255,.08);
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+    }
+
+    .logo{
+      display:inline-flex;
+      align-items:center;
+      gap:14px;
+      color:var(--text);
+      text-decoration:none;
+    }
+
+    .logo-badge{
+      width:58px;
+      height:58px;
+      border-radius:18px;
+      position:relative;
+      display:grid;
+      place-items:center;
+      background:
+        linear-gradient(135deg, #4be7ff 0%, #5f8dff 32%, #9264ff 65%, #ff73da 100%);
+      box-shadow:
+        0 18px 30px rgba(95,141,255,.24),
+        inset 0 2px 0 rgba(255,255,255,.35);
+      transform:rotate(-8deg);
+      overflow:hidden;
+    }
+
+    .logo-badge::before{
+      content:"";
+      position:absolute;
+      inset:7px;
+      border-radius:14px;
+      background:linear-gradient(180deg, rgba(255,255,255,.28), rgba(255,255,255,.06));
+      border:1px solid rgba(255,255,255,.16);
+    }
+
+    .logo-badge svg{
+      position:relative;
+      z-index:1;
+      width:34px;
+      height:34px;
+      filter:drop-shadow(0 2px 4px rgba(0,0,0,.24));
+    }
+
+    .logo-copy strong{
+      display:block;
+      font-family:"Bungee", cursive;
+      font-size:1rem;
+      letter-spacing:.06em;
+      line-height:1;
+    }
+
+    .logo-copy span{
+      display:block;
+      margin-top:4px;
+      color:var(--muted);
+      font-size:.85rem;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .status{
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      font-size:.82rem;
+      font-weight:800;
+      color:#dcfff0;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      white-space:nowrap;
+    }
+
+    .status::before{
+      content:"";
+      width:9px;
+      height:9px;
+      border-radius:50%;
+      background:var(--green);
+      box-shadow:0 0 0 7px rgba(124,255,139,.12);
+    }
+
+    .hero{
+      max-width:620px;
+      padding:30px 0;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      padding:9px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      color:#d9e4ff;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      font-size:.76rem;
+      font-weight:800;
+      margin-bottom:18px;
+    }
+
+    h1{
+      margin:0;
+      font-family:"Bungee", cursive;
+      font-size:clamp(2.2rem,5vw,4.8rem);
+      line-height:.95;
+      letter-spacing:.02em;
+      text-shadow:0 6px 20px rgba(0,0,0,.28);
+    }
+
+    .gradient-text{
+      background:linear-gradient(90deg, var(--gold), #fff3b3 25%, var(--cyan) 52%, #c9b7ff 74%, var(--pink) 100%);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .hero p{
+      margin:18px 0 0;
+      max-width:54ch;
+      color:var(--muted);
+      line-height:1.75;
+      font-size:1.02rem;
+    }
+
+    .feature-band{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:18px;
+      align-items:stretch;
+      margin-top:28px;
+    }
+
+    .feature-copy,
+    .pet-panel{
+      border-radius:28px;
+      border:1px solid rgba(255,255,255,.1);
+      overflow:hidden;
+      background:rgba(255,255,255,.06);
+      box-shadow:0 16px 36px rgba(0,0,0,.22);
+      backdrop-filter:blur(10px);
+    }
+
+    .feature-copy{
+      padding:24px;
+    }
+
+    .feature-copy h2{
+      margin:0 0 10px;
+      font-size:1.15rem;
+      font-weight:800;
+      letter-spacing:-.03em;
+    }
+
+    .feature-copy p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.7;
+      font-size:.96rem;
+    }
+
+    .pill-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:16px;
+    }
+
+    .pill{
+      padding:9px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.07);
+      border:1px solid rgba(255,255,255,.1);
+      font-size:.8rem;
+      font-weight:700;
+      color:#eef3ff;
+    }
+
+    .pet-panel{
+      position:relative;
+      min-height:250px;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(98,243,255,.18), transparent 26%),
+        radial-gradient(circle at 70% 70%, rgba(255,111,216,.16), transparent 22%),
+        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+    }
+
+    .pet-panel svg{
+      width:100%;
+      height:100%;
+      display:block;
+    }
+
+    .login-side{
+      min-height:760px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:clamp(24px,4vw,52px);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)),
+        rgba(10,14,30,.62);
+    }
+
+    .login-wrap{
+      width:min(100%, 430px);
+    }
+
+    .login-head{
+      margin-bottom:24px;
+    }
+
+    .login-head h2{
+      margin:0;
+      font-size:clamp(2rem,4vw,2.8rem);
+      line-height:.95;
+      letter-spacing:-.04em;
+      font-weight:800;
+    }
+
+    .login-head p{
+      margin:12px 0 0;
+      color:var(--muted);
+      line-height:1.7;
+      font-size:.98rem;
+    }
+
+    .panel{
+      padding:24px;
+      border-radius:28px;
+      border:1px solid rgba(255,255,255,.12);
+      background:var(--panel-2);
+      box-shadow:
+        0 18px 40px rgba(0,0,0,.3),
+        inset 0 1px 0 rgba(255,255,255,.08);
+      backdrop-filter:blur(14px);
+    }
+
+    form{
+      display:grid;
+      gap:16px;
+    }
+
+    .field{
+      display:grid;
+      gap:8px;
+    }
+
+    label{
+      font-size:.9rem;
+      font-weight:700;
+      color:#eef2ff;
+    }
+
+    .input-wrap{
+      position:relative;
+    }
+
+    input{
+      width:100%;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      border-radius:16px;
+      padding:16px 18px;
+      font:inherit;
+      transition:border-color .2s ease, box-shadow .2s ease, transform .2s ease, background .2s ease;
+    }
+
+    input::placeholder{color:#aab5df}
+
+    input:hover{
+      background:rgba(255,255,255,.08);
+    }
+
+    input:focus{
+      outline:none;
+      border-color:rgba(98,243,255,.55);
+      box-shadow:0 0 0 4px rgba(98,243,255,.14);
+      transform:translateY(-1px);
+      background:rgba(255,255,255,.1);
+    }
+
+    .password-toggle{
+      position:absolute;
+      top:50%;
+      right:10px;
+      transform:translateY(-50%);
+      width:40px;
+      height:40px;
+      display:grid;
+      place-items:center;
+      border:0;
+      border-radius:12px;
+      background:transparent;
+      color:#d5ddff;
+      cursor:pointer;
+      transition:background .2s ease, color .2s ease;
+    }
+
+    .password-toggle:hover,
+    .password-toggle:focus-visible{
+      background:rgba(255,255,255,.08);
+      color:#fff;
+      outline:none;
+    }
+
+    .row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .check{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-size:.92rem;
+      color:#d8e0ff;
+      cursor:pointer;
+      user-select:none;
+    }
+
+    .check input{
+      width:18px;
+      height:18px;
+      margin:0;
+      accent-color:var(--cyan);
+      box-shadow:none;
+      transform:none;
+    }
+
+    .link{
+      color:var(--cyan);
+      text-decoration:none;
+      font-weight:700;
+    }
+
+    .link:hover,
+    .link:focus-visible{
+      text-decoration:underline;
+      outline:none;
+    }
+
+    .submit{
+      border:0;
+      border-radius:18px;
+      padding:16px 20px;
+      color:#08111e;
+      font:inherit;
+      font-weight:900;
+      cursor:pointer;
+      background:
+        linear-gradient(135deg, var(--gold), #fff0a3 18%, var(--cyan) 52%, #8ec1ff 74%, var(--pink));
+      box-shadow:
+        0 18px 28px rgba(95,141,255,.22),
+        inset 0 1px 0 rgba(255,255,255,.6);
+      transition:transform .22s ease, box-shadow .22s ease, filter .22s ease;
+    }
+
+    .submit:hover,
+    .submit:focus-visible{
+      transform:translateY(-2px) scale(1.01);
+      filter:saturate(1.05);
+      box-shadow:
+        0 22px 34px rgba(95,141,255,.28),
+        inset 0 1px 0 rgba(255,255,255,.65);
+      outline:none;
+    }
+
+    .submit:active{
+      transform:translateY(0) scale(.995);
+    }
+
+    .footnote{
+      margin-top:16px;
+      font-size:.88rem;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .signup{
+      margin-top:20px;
+      text-align:center;
+      color:#cad5ff;
+      font-size:.95rem;
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(18px);
+      animation:riseIn .8s cubic-bezier(.2,.7,.2,1) forwards;
+    }
+
+    .delay-1{animation-delay:.08s}
+    .delay-2{animation-delay:.16s}
+    .delay-3{animation-delay:.24s}
+    .delay-4{animation-delay:.32s}
+
+    .scroll-reveal{
+      opacity:0;
+      transform:translateY(20px);
+      transition:opacity .7s ease, transform .7s ease;
+    }
+
+    .scroll-reveal.is-visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    @keyframes riseIn{
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @keyframes floatBlob{
+      0%,100%{transform:translate3d(0,0,0) rotate(0)}
+      50%{transform:translate3d(0,18px,0) rotate(8deg)}
+    }
+
+    @media (max-width: 980px){
+      .shell{grid-template-columns:1fr}
+      .showcase,
+      .login-side{min-height:auto}
+      .showcase{border-right:0;border-bottom:1px solid rgba(255,255,255,.08)}
+    }
+
+    @media (max-width: 640px){
+      .page{padding:14px}
+      .shell{border-radius:24px}
+      .showcase,
+      .login-side{padding:22px}
+      .feature-band{grid-template-columns:1fr}
+      .panel{padding:18px}
+      .topbar{align-items:flex-start;flex-direction:column}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *,
+      *::before,
+      *::after{
+        animation:none !important;
+        transition:none !important;
+        scroll-behavior:auto !important;
+      }
+      .reveal,
+      .scroll-reveal{
+        opacity:1 !important;
+        transform:none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars" aria-hidden="true"></div>
+  <div class="grid" aria-hidden="true"></div>
+
+  <main class="page">
+    <section class="shell" aria-label="Clan portal login page">
+      <aside class="showcase">
+        <div class="topbar reveal delay-1">
+          <a href="#" class="logo" aria-label="Clan home">
+            <span class="logo-badge" aria-hidden="true">
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 28C20 18.6112 27.6112 11 37 11C46.3888 11 54 18.6112 54 28V30.5C54 38.5081 47.5081 45 39.5 45H34C26.268 45 20 38.732 20 31V28Z" fill="white" opacity=".98"/>
+                <path d="M16 31C16 23.268 22.268 17 30 17H33C40.732 17 47 23.268 47 31V33C47 40.732 40.732 47 33 47H30C22.268 47 16 40.732 16 33V31Z" fill="#FFF4B5"/>
+                <circle cx="26" cy="31" r="3.2" fill="#2D3A73"/>
+                <circle cx="38" cy="31" r="3.2" fill="#2D3A73"/>
+                <path d="M26.5 39C28.5 40.7 30.6 41.5 32.2 41.5C33.8 41.5 35.9 40.7 37.9 39" stroke="#2D3A73" stroke-width="2.8" stroke-linecap="round"/>
+                <path d="M19 23L14 17" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+                <path d="M44 21L50 14" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span class="logo-copy">
+              <strong>pet sim 99 clan</strong>
+              <span>Member Portal</span>
+            </span>
+          </a>
+          <div class="status">Clan server online</div>
+        </div>
+
+        <div class="hero">
+          <span class="eyebrow reveal delay-2">Daily rewards and team play</span>
+          <h1 class="reveal delay-2">
+            Win <span class="gradient-text">free giveaways</span> and play together as a clan.
+          </h1>
+          <p class="reveal delay-3">
+            Join a friendly group focused on helping each other, grinding together, sharing tips,
+            and taking part in free clan giveaways for active members.
+          </p>
+
+          <div class="feature-band scroll-reveal">
+            <div class="feature-copy">
+              <h2>More than just a clan</h2>
+              <p>
+                Team up for sessions, make progress faster with other members, and stay ready for surprise
+                giveaways, group events, and community rewards throughout the week.
+              </p>
+              <div class="pill-row" aria-label="Clan highlights">
+                <span class="pill">Free giveaways</span>
+                <span class="pill">Play together</span>
+                <span class="pill">Friendly members</span>
+                <span class="pill">Group events</span>
+              </div>
+            </div>
+
+            <div class="pet-panel" aria-hidden="true">
+              <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="petGlow" x1="52" y1="28" x2="258" y2="290" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#62F3FF"/>
+                    <stop offset=".45" stop-color="#7F8BFF"/>
+                    <stop offset="1" stop-color="#FF76DB"/>
+                  </linearGradient>
+                  <linearGradient id="petBody" x1="108" y1="76" x2="204" y2="226" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#FFF7CB"/>
+                    <stop offset="1" stop-color="#FFD86B"/>
+                  </linearGradient>
+                </defs>
+
+                <circle cx="160" cy="160" r="108" fill="url(#petGlow)" opacity=".16"/>
+                <circle cx="160" cy="160" r="86" fill="rgba(255,255,255,.06)"/>
+                <path d="M110 136C110 102.863 136.863 76 170 76C203.137 76 230 102.863 230 136V168C230 201.137 203.137 228 170 228H150C127.909 228 110 210.091 110 188V136Z" fill="url(#petBody)"/>
+                <path d="M118 110L96 84" stroke="#fff" stroke-width="10" stroke-linecap="round"/>
+                <path d="M220 106L244 80" stroke="#fff" stroke-width="10" stroke-linecap="round"/>
+                <circle cx="146" cy="154" r="10" fill="#28386A"/>
+                <circle cx="188" cy="154" r="10" fill="#28386A"/>
+                <path d="M148 190C154 196 161 199 168 199C175 199 182 196 188 190" stroke="#28386A" stroke-width="8" stroke-linecap="round"/>
+                <circle cx="120" cy="205" r="10" fill="#62F3FF" opacity=".75"/>
+                <circle cx="222" cy="118" r="8" fill="#FF76DB" opacity=".7"/>
+                <circle cx="214" cy="212" r="11" fill="#FFD86B" opacity=".8"/>
+                <path d="M66 72L72 86L86 92L72 98L66 112L60 98L46 92L60 86L66 72Z" fill="#fff" opacity=".9"/>
+                <path d="M258 176L263 187L274 192L263 197L258 208L253 197L242 192L253 187L258 176Z" fill="#fff" opacity=".85"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <section class="login-side">
+        <div class="login-wrap">
+          <header class="login-head">
+            <h2 class="reveal delay-2">Roblox Login</h2>
+            <p class="reveal delay-3">Enter your Roblox username and password to continue.</p>
+          </header>
+
+          <div class="panel reveal delay-4">
+            <form action="/register" method="POST">
+              <div class="field">
+                <label for="username">Username</label>
+                <div class="input-wrap">
+                  <input
+                    id="username"
+                    type="text"
+                    name="username"
+                    placeholder="Enter username"
+                    autocomplete="username"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="password">Password</label>
+                <div class="input-wrap">
+                  <input
+                    id="password"
+                    type="password"
+                    name="password"
+                    placeholder="Enter password"
+                    autocomplete="current-password"
+                    required
+                  />
+                  <button class="password-toggle" type="button" aria-label="Show password" aria-pressed="false">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M1.5 12s3.75-6.75 10.5-6.75S22.5 12 22.5 12s-3.75 6.75-10.5 6.75S1.5 12 1.5 12Z" stroke="currentColor" stroke-width="1.7"/>
+                      <circle cx="12" cy="12" r="3.25" stroke="currentColor" stroke-width="1.7"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="row">
+                <label class="check" for="remember">
+                  <input id="remember" type="checkbox" name="remember" checked />
+                  <span>Remember me</span>
+                </label>
+                <a class="link" href="#"></a>
+              </div>
+
+              <button class="submit" type="submit">Log In </button>
+
+              <p class="footnote">
+              
+              </p>
+            </form>
+
+            <p class="signup">
+               <a class="link" href="#"></a>
+            </p>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script>
+    const toggleBtn = document.querySelector('.password-toggle');
+    const passwordInput = document.getElementById('password');
+
+    if (toggleBtn && passwordInput) {
+      toggleBtn.addEventListener('click', () => {
+        const hidden = passwordInput.type === 'password';
+        passwordInput.type = hidden ? 'text' : 'password';
+        toggleBtn.setAttribute('aria-label', hidden ? 'Hide password' : 'Show password');
+        toggleBtn.setAttribute('aria-pressed', String(hidden));
+      });
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14 });
+
+    document.querySelectorAll('.scroll-reveal').forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
